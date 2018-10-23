@@ -1,6 +1,6 @@
 #include <algorithm>
-#include <iterator>
 #include <memory>
+#include <iterator>
 using namespace std;
 
 void mergeSort(int* mas, int size)

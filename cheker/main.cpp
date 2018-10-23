@@ -7,10 +7,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-
+	const string way = string(argv[3]);
+	result checker_result(way);
 	// Открываем файл входных данных, файл выходных данных и ответ участника
 	FILE * bui = fopen(argv[1], "rb");
 	FILE * buo = fopen(argv[2], "rb");
+	FILE * bua = fopen(argv[4], "rb");
 
 	int n;
 	// Считываем размерность матриц
@@ -24,14 +26,9 @@ int main(int argc, char* argv[])
 	fread(&res_time, sizeof(res_time), 1, buo);
 	fread(res, sizeof(*res), n, buo);
 
-	std::ifstream fin(R"(E:\SoftGrader\simple_testing_system\answer.txt)");
+	fread(&ans_time, sizeof(ans_time), 1, bua);
 
-	fin >> ans_time;
-
-	int* data = new int[n];
-
-	for (int i = 0; i < n; ++i)
-		fin >> ans[i];
+	fread(ans, sizeof(*ans), n, bua);
 
 	// Вычисляем ошибку, как квадрат нормы разности решений
 	bool mistake = false;

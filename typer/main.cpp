@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 		fwrite(&N, sizeof(N), 1, stdout);
 		fwrite(data, sizeof(*data), N, stdout);
 	}
-	if (argc == 4 && std::string(argv[1]) == "viewer")
+	if (argc == 5 && std::string(argv[1]) == "viewer")
 	{
 		int N;
 		double time;
@@ -43,10 +43,11 @@ int main(int argc, char* argv[])
 
 		fread(data, sizeof(*data), N, stdin);
 
-		std::ofstream fout("output.txt");
+		std::ofstream fout(argv[4]);
 		fout << time << " ";
 		for (int i = 0; i < N; ++i)
 			fout << data[i] << " ";
+		fout << std::endl;
 		fout.close();
 	}
 	return 0;
